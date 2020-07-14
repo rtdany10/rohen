@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include rohen *.css
+recursive-include rohen *.csv
+recursive-include rohen *.html
+recursive-include rohen *.ico
+recursive-include rohen *.js
+recursive-include rohen *.json
+recursive-include rohen *.md
+recursive-include rohen *.png
+recursive-include rohen *.py
+recursive-include rohen *.svg
+recursive-include rohen *.txt
+recursive-exclude rohen *.pyc
