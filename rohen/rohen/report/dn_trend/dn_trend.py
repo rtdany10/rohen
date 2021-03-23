@@ -8,19 +8,20 @@ from frappe import _
 def execute(filters=None):
 	if not filters: return [], []
 	columns = [
-		_("Item") + ":Link/Item:350", _("Customer") + ":Link/Customer:340",
+		_("Item") + ":Link/Item:200", _("Item Description") + "::340",
+		_("Customer") + ":Link/Customer:200", _("Order Confirmation No") + "::180",
 		_("Quantity") + ":Float:180", _("Amount") + ":Currency:220"
 	]
 	data = []
-	delivery_note = frappe.db.sql("""select name, customer from `tabDelivery Note` where {}""".format(get_conditions(filters)), as_dict=1)
+	delivery_note = frappe.db.sql("""select name, order_confirmation, customer from `tabDelivery Note` where {}""".format(get_conditions(filters)), as_dict=1)
 	for dn in delivery_note:
 		if filters.get("item_code"):
 			cond = "parent = '{}' and item_code = '{}'".format(dn.name, filters.get("item_code"))
 		else:
 			cond = "parent = '{}'".format(dn.name)
-		items = frappe.db.sql("""select item_code, qty, base_net_amount from `tabDelivery Note Item` where {}""".format(cond), as_dict=1)
+		items = frappe.db.sql("""select item_code, description, qty, base_net_amount from `tabDelivery Note Item` where {}""".format(cond), as_dict=1)
 		for item in items:
-			data.append([item.item_code, dn.customer, item.qty, item.base_net_amount])
+			data.append([item.item_code, item.description, dn.customer, dn.order_confirmation, item.qty, item.base_net_amount])
 	return columns, data
 
 def get_conditions(filters):
