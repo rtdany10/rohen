@@ -54,13 +54,13 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th style="width: 15%">{%= __("SL NO") %}</th>
+                <th style="width: 5%">{%= __("SL NO") %}</th>
                 <th style="width: 13%">{%= __("Item") %}</th>
-                <th style="width: 26%">{%= __("Item Description") %}</th>
+                <th style="width: 25%">{%= __("Item Description") %}</th>
                 <th style="width: 16%">{%= __("Customer") %}</th>
-                <th style="width: 12%">{%= __("Order Confirmation No") %}</th>
+                <th style="width: 16%">{%= __("Order Confirmation No") %}</th>
                 <th style="width: 8%">{%= __("Quantity") %}</th>
-                <th style="width: 16%">{%= __('Amount') %}</th>
+                <th style="width: 14%">{%= __('Amount') %}</th>
             </tr>
         </thead>
         <tbody>
@@ -69,10 +69,10 @@
                     {% if(!data[i]["is_total_row"]) { %}
                         <tr>
                             <td style="text-align: center;">{%= data[i]["sl_no"] || i+1 %}</td>
-                            <td>{%= data[i]["item"] || "&nbsp;" %}</td>
-                            <td>{%= data[i]["item_description"] || "&nbsp;" %}</td>
-                            <td>{%= data[i]["customer"] || "&nbsp;" %}</td>
-                            <td>{%= data[i]["order_confirmation_no"] || "&nbsp;" %}</td>
+                            <td style="text-align: left;">{%= data[i]["item"] || "&nbsp;" %}</td>
+                            <td style="text-align: left;">{%= data[i]["item_description"] || "&nbsp;" %}</td>
+                            <td style="text-align: left;">{%= data[i]["customer"] || "&nbsp;" %}</td>
+                            <td style="text-align: left;">{%= data[i]["order_confirmation_no"] || "&nbsp;" %}</td>
                             <td style="text-align: right;">{%= data[i]["quantity"] || 0 %}</td>
                             <td style="text-align: right;">{%= format_currency(data[i]["amount"], data[i]["currency"]) %}</td>
                         </tr>
