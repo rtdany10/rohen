@@ -4,7 +4,7 @@ authors = [
     { name = "craft interactive", email = "nishi@craftinteractive.ae"}
 ]
 description = "custom app"
-requires-python = ">=3.10"
+requires-python = ">=3.6"
 readme = "README.md"
 dynamic = ["version"]
 dependencies = []
